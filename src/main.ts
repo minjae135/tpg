@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import './style.css';
 import { MenuScene } from './scenes/MenuScene';
 import { PingPongScene } from './scenes/PingPongScene';
 
