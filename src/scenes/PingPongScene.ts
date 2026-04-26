@@ -53,10 +53,11 @@ export class PingPongScene extends Phaser.Scene {
 
     private createPaddle(x: number, y: number) {
         // 그래픽으로 패들 모양 생성 후 텍스처로 변환
-        const graphics = this.make.graphics({ x: 0, y: 0, add: false });
+        const graphics = this.make.graphics({ x: 0, y: 0 });
         graphics.fillStyle(0xffffff);
         graphics.fillRect(0, 0, 20, 100);
         graphics.generateTexture(`paddle_${x}`, 20, 100);
+        graphics.destroy(); // 사용 후 메모리 해제
 
         const paddle = this.physics.add.sprite(x, y, `paddle_${x}`);
         paddle.setImmovable(true);
@@ -65,10 +66,11 @@ export class PingPongScene extends Phaser.Scene {
     }
 
     private createBall(x: number, y: number) {
-        const graphics = this.make.graphics({ x: 0, y: 0, add: false });
+        const graphics = this.make.graphics({ x: 0, y: 0 });
         graphics.fillStyle(0xffffff);
         graphics.fillCircle(10, 10, 10);
         graphics.generateTexture('ball', 20, 20);
+        graphics.destroy(); // 사용 후 메모리 해제
 
         const ball = this.physics.add.sprite(x, y, 'ball');
         ball.setCollideWorldBounds(true);
